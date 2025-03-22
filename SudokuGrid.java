@@ -68,6 +68,35 @@ public class SudokuGrid {
         }
     }
 
+    public void display2() {
+        final String TOP_LINE    = "┏━━━┯━━━┯━━━┳━━━┯━━━┯━━━┳━━━┯━━━┯━━━┓";
+        final String THICK_MID   = "┣━━━┿━━━┿━━━╋━━━┿━━━┿━━━╋━━━┿━━━┿━━━┫";
+        final String THIN_MID    = "┠───┼───┼───╂───┼───┼───╂───┼───┼───┨";
+        final String BOTTOM_LINE = "┗━━━┷━━━┷━━━┻━━━┷━━━┷━━━┻━━━┷━━━┷━━━┛";
+        System.out.println(TOP_LINE);
+        for (int i = 0; i < 9; i++) {
+            StringBuilder rowBuilder = new StringBuilder();
+            rowBuilder.append("┃");
+            for (int j = 0; j < 9; j++) {
+                int val = grid[i][j];
+                if (val == 0) {
+                    rowBuilder.append("  "); 
+                } else {
+                    rowBuilder.append(" ").append(val).append(" ");
+                }
+                if (j == 2 || j == 5 || j == 8) {
+                    rowBuilder.append("┃");
+                } else {
+                    rowBuilder.append("│");
+                }
+            }
+            System.out.println(rowBuilder.toString());
+            if      (i == 2 || i == 5) System.out.println(THICK_MID);
+            else if (i == 8)           System.out.println(BOTTOM_LINE);
+            else                       System.out.println(THIN_MID);
+        }
+    }
+
     public int[][] getGrid() {
         return grid;
     }
