@@ -68,6 +68,36 @@ public class SudokuGrid {
         }
     }
 
+    public void display1() {
+        // Lignes de séparation
+        final String TOP_LINE    = "┌─────────┬─────────┬─────────┐";
+        final String MID_LINE   = "├─────────┼─────────┼─────────┤";
+        final String BOTTOM_LINE = "└─────────┴─────────┴─────────┘";
+        
+        System.out.println(TOP_LINE);
+        for (int i = 0; i < 9; i++) {
+            System.out.print("│");
+            for (int j = 0; j < 9; j++) {
+                int val = grid[i][j];
+                // Affiche un point pour les cases vides (0), sinon le chiffre
+                System.out.print(" " + (val == 0 ? " " : val) + " ");
+                
+                // Ajoute une bordure verticale après chaque bloc de 3 colonnes
+                if (j == 2 || j == 5 || j == 8) {
+                    System.out.print("│");
+                }
+            }
+            System.out.println();
+            
+            // Ajoute une ligne de séparation horizontale après chaque bloc de 3 lignes
+            if (i == 2 || i == 5) {
+                System.out.println(MID_LINE);
+            }
+        }
+        System.out.println(BOTTOM_LINE);
+    }
+     
+
     public void display2() {
         final String TOP_LINE    = "┏━━━┯━━━┯━━━┳━━━┯━━━┯━━━┳━━━┯━━━┯━━━┓";
         final String THICK_MID   = "┣━━━┿━━━┿━━━╋━━━┿━━━┿━━━╋━━━┿━━━┿━━━┫";

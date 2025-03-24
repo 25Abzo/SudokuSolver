@@ -59,12 +59,12 @@ public class Main {
         sudokuGrid.loadGrid(grid);
 
         System.out.println("Grille initiale :");
-        sudokuGrid.display();
+        sudokuGrid.display1();
 
         SudokuSolver solver = new SudokuSolver(sudokuGrid);
         if (solver.solve()) {
             System.out.println("Grille résolue :");
-            sudokuGrid.display();
+            sudokuGrid.display2();
         } else {
             System.out.println("Impossible de résoudre la grille.");
         }
