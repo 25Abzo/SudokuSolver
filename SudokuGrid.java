@@ -49,26 +49,6 @@ public class SudokuGrid {
     }
 
     public void display() {
-        System.out.println("-------------------");
-        for (int i = 0; i < 9; i++) {
-            System.out.print("|");
-            for (int j = 0; j < 9; j++) {
-                if (grid[i][j] == 0)
-                    System.out.print(" ");
-                else
-                    System.out.print(grid[i][j]);
-                if ((j + 1) % 3 == 0)
-                    System.out.print("|");
-                else
-                    System.out.print(" ");
-            }
-            System.out.println();
-            if ((i + 1) % 3 == 0)
-                System.out.println("-------------------");
-        }
-    }
-
-    public void display1() {
         // Lignes de séparation
         final String TOP_LINE    = "┌─────────┬─────────┬─────────┐";
         final String MID_LINE   = "├─────────┼─────────┼─────────┤";
@@ -98,15 +78,19 @@ public class SudokuGrid {
     }
      
 
-    public void display2() {
-        final String TOP_LINE    = "┏━━━┯━━━┯━━━┳━━━┯━━━┯━━━┳━━━┯━━━┯━━━┓";
-        final String THICK_MID   = "┣━━━┿━━━┿━━━╋━━━┿━━━┿━━━╋━━━┿━━━┿━━━┫";
-        final String THIN_MID    = "┠───┼───┼───╂───┼───┼───╂───┼───┼───┨";
-        final String BOTTOM_LINE = "┗━━━┷━━━┷━━━┻━━━┷━━━┷━━━┻━━━┷━━━┷━━━┛";
+    public void display1() {
+        //Definition des lignes de separation
+        final String TOP_LINE    = "┏━━━┯━━━┯━━━┳━━━┯━━━┯━━━┳━━━┯━━━┯━━━┓"; 
+        final String THICK_MID   = "┣━━━┿━━━┿━━━╋━━━┿━━━┿━━━╋━━━┿━━━┿━━━┫"; 
+        final String THIN_MID    = "┠───┼───┼───╂───┼───┼───╂───┼───┼───┨"; 
+        final String BOTTOM_LINE = "┗━━━┷━━━┷━━━┻━━━┷━━━┷━━━┻━━━┷━━━┷━━━┛"; 
         System.out.println(TOP_LINE);
+        //Boucle pour parcourir les lignes du tableau
         for (int i = 0; i < 9; i++) {
+            //Utilisation du StringBuilder pour construire chaque ligne du tableau
             StringBuilder rowBuilder = new StringBuilder();
             rowBuilder.append("┃");
+            //Boucle pour parcourir les colonnes de chaque ligne
             for (int j = 0; j < 9; j++) {
                 int val = grid[i][j];
                 if (val == 0) {
@@ -114,12 +98,15 @@ public class SudokuGrid {
                 } else {
                     rowBuilder.append(" ").append(val).append(" ");
                 }
+                //Apres chaque 3 colonnes (indices 2, 5, 8) on ajoute une bordure verticale ┃
                 if (j == 2 || j == 5 || j == 8) {
                     rowBuilder.append("┃");
                 } else {
+                    //Sinon on ajoute une bordure fine │
                     rowBuilder.append("│");
                 }
             }
+            //Affiche la ligne construite
             System.out.println(rowBuilder.toString());
             if      (i == 2 || i == 5) System.out.println(THICK_MID);
             else if (i == 8)           System.out.println(BOTTOM_LINE);
