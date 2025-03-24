@@ -5,6 +5,7 @@ import java.io.FileReader;
 
 public class Main {
     public static void main(String[] args) {
+
         int[][] grid = new int[9][9];
         if (args.length == 1) {
             String filename = args[0];
@@ -51,7 +52,7 @@ public class Main {
                         return;
                     }
                 }
-                scanner.close();
+               // scanner.close();
             }
         }
 
@@ -59,12 +60,12 @@ public class Main {
         sudokuGrid.loadGrid(grid);
 
         System.out.println("Grille initiale :");
-        sudokuGrid.display();
+        sudokuGrid.display2();
 
         SudokuSolver solver = new SudokuSolver(sudokuGrid);
         if (solver.solve()) {
             System.out.println("Grille résolue :");
-            sudokuGrid.display();
+            sudokuGrid.display2();
         } else {
             System.out.println("Impossible de résoudre la grille.");
         }
